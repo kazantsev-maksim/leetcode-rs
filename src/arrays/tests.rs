@@ -24,3 +24,18 @@ fn is_palindrome_test() {
         assert_eq!(Solution::is_palindrome(case.0), case.1)
     }
 }
+
+#[test]
+fn is_valid_test() {
+    let test_cases = vec![
+        ("(){}", true),
+        (")(", false),
+        ("(){", false),
+        ("[{()}]", true),
+        ("((", false),
+        ("(){}}{", false)
+    ];
+    for case in test_cases {
+        assert_eq!(Solution::is_valid(case.0.to_string()), case.1);
+    }
+}

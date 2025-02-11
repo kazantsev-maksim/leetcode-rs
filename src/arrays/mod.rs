@@ -23,4 +23,21 @@ impl Solution {
     pub fn is_palindrome(x: i32) -> bool {
         x.to_string() == x.to_string().chars().rev().collect::<String>()
     }
+
+    // https://leetcode.com/problems/valid-parentheses/
+    pub fn is_valid(s: String) -> bool {
+        let mut brackets = Vec::with_capacity(s.len());
+        for bracket in s.chars() {
+            match bracket {
+                '(' => brackets.push(')'),
+                '{' => brackets.push('}'),
+                '[' => brackets.push(']'),
+
+                closing => if Some(closing) != brackets.pop() {
+                    return false
+                }
+            }
+        }
+        brackets.is_empty()
+    }
 }
