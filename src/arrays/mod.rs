@@ -40,4 +40,15 @@ impl Solution {
         }
         brackets.is_empty()
     }
+
+    // https://leetcode.com/problems/longest-common-prefix/
+    pub fn longest_common_prefix(input: Vec<String>) -> String {
+        input.into_iter().reduce(|prefix, next|{
+            prefix.chars()
+                .zip(next.chars())
+                .take_while(|(a,c)| a == c)
+                .map(|(c,_)|c)
+                .collect()
+        }).unwrap()
+    }
 }
