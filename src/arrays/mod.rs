@@ -3,6 +3,7 @@ use std::collections::HashMap;
 mod tests;
 
 struct Solution;
+
 impl Solution {
 
     // https://leetcode.com/problems/two-sum/description/
@@ -50,5 +51,17 @@ impl Solution {
                 .map(|(c,_)|c)
                 .collect()
         }).unwrap()
+    }
+
+    // https://leetcode.com/problems/remove-element/
+    pub fn remove_element(nums: &mut Vec<i32>, val: i32) -> i32 {
+        let mut idx = 0;
+        for i in 0..nums.len() {
+            if nums[i] != val {
+                nums[idx] = nums[i];
+                idx += 1;
+            }
+        }
+        idx as i32
     }
 }
